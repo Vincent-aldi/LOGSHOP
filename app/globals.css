@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FDFDFC;
+  color: #0A0A0A;
+}
+
+::selection {
+  background-color: #0A0A0A;
+  color: #FDFDFC;
+}
+
+/* Signature element: kartu logo yang membalik dari versi putih-di-hitam
+   ke hitam-di-putih saat disentuh — merepresentasikan bagaimana sebuah
+   logo yang baik harus tetap kuat di kedua varian warna. */
+.logo-flip-card {
+  position: relative;
+  overflow: hidden;
+  background-color: #0A0A0A;
+  color: #FDFDFC;
+  transition: background-color 0.45s cubic-bezier(0.65, 0, 0.35, 1),
+    color 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.logo-flip-card:hover,
+.logo-flip-card:focus-within {
+  background-color: #FDFDFC;
+  color: #0A0A0A;
+}
+
+/* Untuk logo klien berupa gambar/foto asli (bukan SVG currentColor),
+   filter invert ini menjaga siluetnya tetap terbaca di kedua varian. */
+.logo-flip-card img {
+  filter: invert(1) brightness(2);
+  transition: filter 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.logo-flip-card:hover img,
+.logo-flip-card:focus-within img {
+  filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-flip-card,
+  .logo-flip-card img {
+    transition: none;
+  }
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid #0A0A0A;
+  outline-offset: 3px;
+}
