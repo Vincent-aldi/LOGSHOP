@@ -1,11 +1,21 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import CartButton from "./shop/CartButton";
+import AuthButton from "./shop/AuthButton";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const showCart =
+  pathname.startsWith("/shop") ||
+  pathname.startsWith("/detail") ||
+  pathname.startsWith("/checkout");
+
   const links = [
     { label: "Jelajahi Kategori", href: "/shop" },
-    { label: "Gabung Jadi Desainer", href: "#" },
-    { label: "Testimoni", href: "#" },
+    { label: "Gabung Jadi Desainer", href: "/join-designer" },
+    { label: "Testimoni", href: "/testimoni" },
   ];
 
   return (
@@ -41,13 +51,9 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-5">
-          <CartButton />
-          <Link
-            href="#"
-            className="rounded-full border border-ink px-5 py-2 text-sm font-semibold text-ink transition-colors hover:bg-ink hover:text-paper focus-ring"
-          >
-            Login
-          </Link>
+          {showCart && <CartButton />}
+
+          <AuthButton />
         </div>
       </nav>
     </header>

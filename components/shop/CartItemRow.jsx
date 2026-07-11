@@ -1,11 +1,17 @@
 "use client";
 
+import ProductThumbnail from "./ProductThumbnail";
 import CategoryIcon from "./CategoryIcon";
 import { formatRupiah } from "@/lib/products";
 
 export default function CartItemRow({ item, onUpdateQuantity, onRemove }) {
   return (
     <div className="flex items-center gap-5 border-b border-line py-6 first:pt-0">
+      <ProductThumbnail
+        product={item}
+        className="h-20 w-20 shrink-0 rounded-xl"
+        iconSize="h-9 w-9"
+      />
       <div className="logo-flip-card flex h-20 w-20 shrink-0 items-center justify-center rounded-xl">
         <CategoryIcon name={item.icon} className="h-9 w-9" />
       </div>

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ProductThumbnail from "@/components/shop/ProductThumbnail";
 import CategoryIcon from "@/components/shop/CategoryIcon";
 import ProductCard from "@/components/shop/ProductCard";
 import AddToCartBox from "@/components/shop/AddToCartBox";
@@ -42,6 +43,12 @@ export default function ProductDetailPage({ params }) {
         </nav>
 
         <div className="mt-8 grid gap-12 md:grid-cols-2">
+          <ProductThumbnail
+            product={product}
+            className="aspect-square rounded-2xl"
+            iconSize="h-40 w-40"
+          />
+          
           <div className="logo-flip-card flex aspect-square items-center justify-center rounded-2xl">
             <CategoryIcon name={product.icon} className="h-40 w-40" />
           </div>
