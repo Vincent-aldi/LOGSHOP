@@ -2,7 +2,7 @@
 
 # 🎨 LOGSHOP
 
-### Marketplace Website untuk Menjual Desain Logo Premium
+### Marketplace Website untuk Menjual Desain Logo
 
 Website marketplace logo modern yang dibangun menggunakan **Next.js** dan **Tailwind CSS** untuk membantu pengguna menemukan, membeli, dan mengunduh berbagai desain logo berkualitas.
 
@@ -24,7 +24,7 @@ LOGSHOP merupakan aplikasi web marketplace yang menyediakan berbagai desain logo
 
 Pengguna dapat menjelajahi katalog logo, melakukan pencarian, memfilter kategori, melihat detail produk, menambahkan logo ke keranjang, hingga melakukan proses checkout.
 
-Project ini dikembangkan menggunakan **Next.js App Router** sehingga memiliki performa yang cepat, SEO-friendly, dan responsif di berbagai perangkat.
+Project ini dikembangkan menggunakan **Next.js App Router** sehingga memiliki performa yang cepat, dan responsif di berbagai perangkat.
 
 ---
 
