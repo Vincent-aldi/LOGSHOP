@@ -66,7 +66,6 @@ Project ini dikembangkan menggunakan **Next.js App Router** sehingga memiliki pe
 ## Authentication
 
 - Login
-- Register
 - Logout
 
 ---
@@ -98,42 +97,6 @@ Project ini dikembangkan menggunakan **Next.js App Router** sehingga memiliki pe
 | Tailwind CSS | Framework CSS |
 | Lucide React | Icon Library |
 | Vercel | Deployment |
-
----
-
-# 🚀 Instalasi
-
-Clone repository
-
-```bash
-git clone https://github.com/username/logshop.git
-```
-
-Masuk ke folder project
-
-```bash
-cd logshop
-```
-
-Install dependency
-
-```bash
-npm install
-```
-
-Jalankan project
-
-```bash
-npm run dev
-```
-
-Buka browser
-
-```text
-http://localhost:3000
-```
-
----
 
 ---
 
