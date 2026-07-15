@@ -1,5 +1,4 @@
 import Link from "next/link";
-import CategoryIcon from "./CategoryIcon";
 import ProductThumbnail from "./ProductThumbnail";
 import { formatRupiah } from "@/lib/products";
 
@@ -11,9 +10,6 @@ export default function ProductCard({ product }) {
         className="aspect-square rounded-2xl"
         iconSize="h-16 w-16"
       />
-      <div className="logo-flip-card flex aspect-square items-center justify-center rounded-2xl">
-        <CategoryIcon name={product.icon} className="h-16 w-16" />
-      </div>
       <p className="mt-4 font-display text-base font-bold text-ink">
         {product.name}
       </p>
