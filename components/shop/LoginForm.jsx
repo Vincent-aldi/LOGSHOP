@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
+import { isAdmin } from "@/lib/admin-data";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -34,7 +35,7 @@ export default function LoginForm() {
     // API/auth provider asli (mis. NextAuth, Supabase, Firebase, dll).
     setTimeout(() => {
       login(email);
-      router.push("/");
+      router.push(isAdmin(email) ? "/admin" : "/");
     }, 600);
   }
 

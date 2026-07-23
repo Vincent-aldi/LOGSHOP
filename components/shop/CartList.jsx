@@ -7,31 +7,8 @@ import { formatRupiah } from "@/lib/products";
 import CartItemRow from "./CartItemRow";
 
 export default function CartList() {
-  const { items, updateQuantity, removeItem, clearCart, totalPrice } = useCart();
-  const [orderPlaced, setOrderPlaced] = useState(false);
-
-  if (orderPlaced) {
-    return (
-      <div className="mx-auto max-w-content px-6 py-24 text-center">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-ink text-paper">
-          <CheckIcon className="h-8 w-8" />
-        </div>
-        <h2 className="mt-6 font-display text-2xl font-bold text-ink">
-          Pesanan Berhasil Dibuat
-        </h2>
-        <p className="mx-auto mt-3 max-w-md text-sm text-mute">
-          Terima kasih! File desain logo akan dikirim ke email Anda setelah
-          pembayaran dikonfirmasi.
-        </p>
-        <Link
-          href="/shop"
-          className="mt-8 inline-block rounded-full bg-ink px-7 py-3 text-sm font-semibold text-paper transition-opacity hover:opacity-80 focus-ring"
-        >
-          Lanjut Belanja
-        </Link>
-      </div>
-    );
-  }
+  const { items, updateQuantity, removeItem, clearCart, totalPrice } =
+    useCart();
 
   if (items.length === 0) {
     return (
@@ -95,13 +72,12 @@ export default function CartList() {
             <span>Total</span>
             <span>{formatRupiah(totalPrice)}</span>
           </div>
-          <button
-            type="button"
-            onClick={() => setOrderPlaced(true)}
-            className="mt-6 w-full rounded-full bg-ink py-3 text-sm font-semibold text-paper transition-opacity hover:opacity-80 focus-ring"
+          <Link
+            href="/checkout"
+            className="mt-6 block w-full rounded-full bg-ink py-3 text-center text-sm font-semibold text-paper transition-opacity hover:opacity-80 focus-ring"
           >
             Checkout
-          </button>
+          </Link>
         </aside>
       </div>
     </div>

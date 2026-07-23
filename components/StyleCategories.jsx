@@ -27,7 +27,7 @@ export default function StyleCategories() {
           sekarang.
         </p>
         <a
-          href="#"
+          href="/shop"
           className="mt-7 inline-block rounded-full border border-ink px-6 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-ink hover:text-paper focus-ring"
         >
           Lihat Semua

@@ -1,7 +1,6 @@
 "use client";
 
 import ProductThumbnail from "./ProductThumbnail";
-import CategoryIcon from "./CategoryIcon";
 import { formatRupiah } from "@/lib/products";
 
 export default function CartItemRow({ item, onUpdateQuantity, onRemove }) {
@@ -12,36 +11,11 @@ export default function CartItemRow({ item, onUpdateQuantity, onRemove }) {
         className="h-20 w-20 shrink-0 rounded-xl"
         iconSize="h-9 w-9"
       />
-      <div className="logo-flip-card flex h-20 w-20 shrink-0 items-center justify-center rounded-xl">
-        <CategoryIcon name={item.icon} className="h-9 w-9" />
-      </div>
 
       <div className="flex-1">
         <p className="font-display text-base font-bold text-ink">{item.name}</p>
         <p className="text-xs uppercase tracking-wide text-mute">{item.category}</p>
         <p className="mt-1 text-sm text-mute">{formatRupiah(item.price)}</p>
-      </div>
-
-      <div className="flex items-center rounded-full border border-ink">
-        <button
-          type="button"
-          onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
-          aria-label="Kurangi jumlah"
-          className="h-9 w-9 text-base font-semibold text-ink focus-ring"
-        >
-          −
-        </button>
-        <span className="w-7 text-center text-sm font-semibold text-ink">
-          {item.quantity}
-        </span>
-        <button
-          type="button"
-          onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
-          aria-label="Tambah jumlah"
-          className="h-9 w-9 text-base font-semibold text-ink focus-ring"
-        >
-          +
-        </button>
       </div>
 
       <p className="w-28 shrink-0 text-right text-sm font-semibold text-ink">

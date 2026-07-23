@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useAuth } from "@/lib/auth-context";
+import { isAdmin } from "@/lib/admin-data";
 
 export default function AuthButton() {
   const { user, logout, hydrated } = useAuth();
@@ -17,10 +18,11 @@ export default function AuthButton() {
   }
 
   if (user) {
+    const dashboardHref = isAdmin(user.email) ? "/admin" : "/dashboard";
     return (
       <div className="flex items-center gap-3">
         <Link
-          href="/dashboard"
+          href={dashboardHref}
           className="hidden text-sm font-medium text-ink hover:underline sm:inline focus-ring"
         >
           {user.email}

@@ -5,7 +5,7 @@ import { useState } from "react";
 const inputClass =
   "mt-2 w-full rounded-lg border border-line bg-paper px-4 py-3 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-ink/20";
 
-export default function TestimonialForm() {
+export default function TestimonialForm({ onSubmit }) {
   const [name, setName] = useState("");
   const [role, setRole] = useState("Pembeli");
   const [quote, setQuote] = useState("");
@@ -13,7 +13,7 @@ export default function TestimonialForm() {
   const [hoverRating, setHoverRating] = useState(0);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [justSubmitted, setJustSubmitted] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -25,25 +25,22 @@ export default function TestimonialForm() {
     }
 
     setLoading(true);
-    // Simulasi pengiriman. Ganti dengan pemanggilan API asli untuk
-    // menyimpan testimoni ini ke database.
+    // Simulasi pengiriman. Untuk produksi, kirim juga ke API/database agar
+    // testimoni tersimpan permanen (saat ini hanya tampil di sesi browser
+    // pengguna yang mengisi, karena datanya cuma disimpan di state React).
     setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-    }, 700);
-  }
+      onSubmit?.({ name: name.trim(), role, quote: quote.trim(), rating });
 
-  if (submitted) {
-    return (
-      <div className="rounded-2xl border border-line bg-paper p-8 text-center">
-        <p className="font-display text-lg font-bold text-ink">
-          Terima kasih atas testimonimu, {name}!
-        </p>
-        <p className="mt-2 text-sm text-mute">
-          Testimonimu akan ditinjau tim kami sebelum tampil di halaman ini.
-        </p>
-      </div>
-    );
+      setLoading(false);
+      setJustSubmitted(true);
+      setTimeout(() => setJustSubmitted(false), 3000);
+
+      // Reset form supaya siap dipakai lagi / oleh pengguna lain di perangkat yang sama
+      setName("");
+      setQuote("");
+      setRating(5);
+      setRole("Pembeli");
+    }, 500);
   }
 
   return (
@@ -55,7 +52,8 @@ export default function TestimonialForm() {
         Tulis Testimonimu
       </h3>
       <p className="mt-1 text-sm text-mute">
-        Sudah pernah beli atau jual desain di LOGSHOP? Ceritakan pengalamanmu.
+        Sudah pernah beli atau jual desain di LOGSHOP? Ceritakan pengalamanmu
+        — testimonimu langsung tampil di atas begitu dikirim.
       </p>
 
       <div className="mt-6">
@@ -136,6 +134,12 @@ export default function TestimonialForm() {
       {error && (
         <p className="mt-4 rounded-lg bg-red-50 px-4 py-2 text-sm text-red-600">
           {error}
+        </p>
+      )}
+
+      {justSubmitted && (
+        <p className="mt-4 rounded-lg bg-ink px-4 py-2 text-sm text-paper">
+          Testimonimu berhasil ditambahkan — lihat di atas ✓
         </p>
       )}
 
